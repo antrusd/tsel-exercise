@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir purwadhika
+mkdir -p /tmp/firmansyahrif/backup_log
+cd purwadhika
+sudo tail -3 /var/log/syslog | tee systemlog.txt
+date_now=$(date +%Y-%m-%d_%H%M$S)
+tar -cvf systemlog.txt backuplog_$date_now.tar.gz
+backup=backuplog_$date_now.tar.gz
+ln backup /tmp/firmansyahrif/backup_log
+echo "message success"
